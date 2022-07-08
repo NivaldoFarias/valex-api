@@ -10,7 +10,7 @@
   <p>
     Back end Development Project <strong>{18ᵗʰ}</strong>
     <br />
-    <a href="https://github.com/NivaldoFarias/valex-api/tree/main/app.js"><strong>Browse TypeScript code»</strong></a>
+    <a href="https://github.com/NivaldoFarias/valex-api/tree/main/src"><strong>Browse TypeScript code»</strong></a>
 </div>
 
 <div align="center">
