@@ -12,4 +12,8 @@ async function createCard(_req: Request, res: Response) {
   res.sendStatus(201);
 }
 
-export { createCard };
+async function activateCard(_req: Request, res: Response) {
+  res.sendStatus(200);
+}
+
+export { createCard, activateCard };
