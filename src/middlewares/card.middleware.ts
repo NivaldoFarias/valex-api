@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
-import * as card from '../repositories/card.repository';
+import * as repository from '../repositories/card.repository';
+import * as service from '../services/card.service';
 import * as entity from '../utils/entity.util';
 
 import AppError from '../config/error';
@@ -10,7 +11,11 @@ import Employee from '../interfaces/employee.interface';
 import Company from '../interfaces/company.interface';
 import Card from '../interfaces/card.interface';
 
-async function sendQueries(_req: Request, res: Response, next: NextFunction) {
+async function newCardQueries(
+  _req: Request,
+  res: Response,
+  next: NextFunction,
+) {
   const {
     header: apiKey,
     body: { employeeId },
@@ -21,7 +26,7 @@ async function sendQueries(_req: Request, res: Response, next: NextFunction) {
     await Promise.all([
       entity.findEntity('companies', 'Company', `"apiKey"`, apiKey),
       entity.findEntity('employees', 'Employee', `"id"`, employeeId),
-      card.find(),
+      repository.find(),
     ]);
 
   res.locals.cards = cards;
@@ -54,4 +59,58 @@ function employeeHasOnlyOneCard(
   return next();
 }
 
-export { sendQueries, employeeHasOnlyOneCard };
+async function activeCardQueries(
+  _req: Request,
+  res: Response,
+  next: NextFunction,
+) {
+  const {
+    body: { cardId },
+  } = res.locals;
+  AppLog('Middleware', 'Queries sent');
+
+  const card: Card = await repository.findById(cardId);
+
+  res.locals.card = card;
+  return next();
+}
+
+async function activateCardValidations(
+  _req: Request,
+  res: Response,
+  next: NextFunction,
+) {
+  const card: Card = res.locals.card;
+  const {
+    body: { securityCode },
+  } = res.locals;
+
+  if (service.isCardAlreadyActive(card)) {
+    throw new AppError(
+      'Card is already active',
+      403,
+      'Card is already active',
+      'A card can only be activated once',
+    );
+  }
+  AppLog('Middleware', 'Card is not yet active');
+
+  if (service.validSecurityCode(card, securityCode)) {
+    throw new AppError(
+      'Invalid security code',
+      403,
+      'Invalid security code',
+      'Ensure to provide a valid security code',
+    );
+  }
+  AppLog('Middleware', 'Valid security code');
+
+  return next();
+}
+
+export {
+  newCardQueries,
+  employeeHasOnlyOneCard,
+  activeCardQueries,
+  activateCardValidations,
+};

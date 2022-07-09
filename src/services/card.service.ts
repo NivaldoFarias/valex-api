@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker';
 import Cryptr from 'cryptr';
+import bcrypt from 'bcrypt';
 
 import * as repository from '../repositories/card.repository';
 
@@ -7,14 +8,17 @@ import TransactionTypes from '../types/transaction.type';
 import Employee from '../interfaces/employee.interface';
 import Card from '../interfaces/card.interface';
 
-async function newCard(employee: Employee, cardType: TransactionTypes) {
-  const cryptrSecret = process.env.CRYPTR_SECRET ?? 'secret';
-  const cryptr = new Cryptr(cryptrSecret);
+import './../config/setup';
 
+const cryptrSecret = process.env.CRYPTR_SECRET || 'secret';
+const SALT_ROUNDS = process.env.BCRYPT_SALT_ROUNDS || 10;
+const CRYPTR = new Cryptr(cryptrSecret);
+
+async function newCard(employee: Employee, cardType: TransactionTypes) {
   const creditCardNumber = faker.finance.creditCardNumber();
   const cardHolderName = formatName(employee.fullName);
   const expirationDate = formatExpirationDate();
-  const cardCVV = cryptr.encrypt(faker.finance.creditCardCVV());
+  const cardCVV = CRYPTR.encrypt(faker.finance.creditCardCVV());
 
   const cardData: Card = {
     employeeId: employee.id,
@@ -30,6 +34,30 @@ async function newCard(employee: Employee, cardType: TransactionTypes) {
   };
 
   return await repository.insert(cardData);
+}
+
+function isCardAlreadyActive(card: Card) {
+  return !!card.password;
+}
+
+function validSecurityCode(card: Card, securityCode: string) {
+  return CRYPTR.decrypt(card.securityCode) === securityCode;
+}
+
+async function createBCryptPassword(card: Card, password: string) {
+  const cryptPass = bcrypt.hashSync(password, SALT_ROUNDS);
+  return {
+    employeeId: card.employeeId,
+    number: card.number,
+    cardholderName: card.cardholderName,
+    securityCode: card.securityCode,
+    expirationDate: card.expirationDate,
+    password: cryptPass,
+    isVirtual: card.isVirtual,
+    originalCardId: card.originalCardId,
+    isBlocked: card.isBlocked,
+    type: card.type,
+  };
 }
 
 function formatName(name: string) {
@@ -63,4 +91,9 @@ function formatExpirationDate() {
   return `${month}/${year}`;
 }
 
-export { newCard };
+export {
+  newCard,
+  isCardAlreadyActive,
+  validSecurityCode,
+  createBCryptPassword,
+};

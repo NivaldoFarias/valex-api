@@ -17,13 +17,15 @@ cardRouter.post(
   '/create',
   validateSchema(cardRequestSchema, `${endpoint}/create`),
   processHeader(header, endpoint),
-  middleware.sendQueries,
+  middleware.newCardQueries,
   middleware.employeeHasOnlyOneCard,
   controller.createCard,
 );
 cardRouter.post(
   '/activate',
   validateSchema(activateCardSchema, `${endpoint}/activate`),
+  middleware.activeCardQueries,
+  middleware.activateCardValidations,
   controller.activateCard,
 );
 

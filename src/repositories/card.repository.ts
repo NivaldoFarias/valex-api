@@ -4,13 +4,17 @@ import client from '../config/database';
 import { CardInsertData, CardUpdateData } from '../types/card.type';
 import TransactionTypes from '../types/transaction.type';
 import Card from '../interfaces/card.interface';
+import AppLog from '../events/AppLog';
 
 async function find() {
+  AppLog('Repository', 'Find all cards');
   const result = await client.query<Card>(`SELECT * FROM cards`);
   return result.rows;
 }
 
 async function findById(id: number) {
+  AppLog('Repository', 'Find card by id');
+
   const result = await client.query<Card, [number]>(
     'SELECT * FROM cards WHERE id=$1',
     [id],
@@ -23,6 +27,7 @@ async function findByTypeAndEmployeeId(
   type: TransactionTypes,
   employeeId: number,
 ) {
+  AppLog('Repository', 'Find card by type and employee id');
   const result = await client.query<Card, [TransactionTypes, number]>(
     `SELECT * FROM cards WHERE type=$1 AND "employeeId"=$2`,
     [type, employeeId],
@@ -36,6 +41,7 @@ async function findByCardDetails(
   cardholderName: string,
   expirationDate: string,
 ) {
+  AppLog('Repository', 'Find card by card details');
   const result = await client.query<Card, [string, string, string]>(
     ` SELECT 
         * 
@@ -61,6 +67,7 @@ async function insert(cardData: CardInsertData) {
     type,
   } = cardData;
 
+  AppLog('Repository', 'Insert card');
   client.query(
     `
     INSERT INTO cards ("employeeId", number, "cardholderName", "securityCode",
@@ -89,6 +96,7 @@ async function update(id: number, cardData: CardUpdateData) {
       offset: 2,
     });
 
+  AppLog('Repository', 'Update card');
   client.query(
     `
     UPDATE cards
@@ -100,6 +108,7 @@ async function update(id: number, cardData: CardUpdateData) {
 }
 
 async function remove(id: number) {
+  AppLog('Repository', 'Remove card');
   client.query<any, [number]>('DELETE FROM cards WHERE id=$1', [id]);
 }
 
