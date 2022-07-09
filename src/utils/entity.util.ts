@@ -10,11 +10,10 @@ async function findEntity(
   column: string,
   key: string | number,
 ) {
-  const query = SqlString.format(`SELECT * FROM ? WHERE ? = ? LIMIT 1`, [
-    table,
-    column,
-    key,
-  ]);
+  const query = SqlString.format(
+    `SELECT * FROM ${table} WHERE ${column} = ? LIMIT 1`,
+    [key],
+  );
   const result = await client.query(query);
   const row = result.rows[0];
 

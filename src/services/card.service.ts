@@ -33,14 +33,25 @@ async function newCard(employee: Employee, cardType: TransactionTypes) {
 }
 
 function formatName(name: string) {
+  const regex = /^(d[a,e,o,i])$/;
   const names = name.split(' ');
   let formattedName = '';
+
   if (names.length === 1) {
     formattedName = names[0];
   } else if (names.length === 2) {
     formattedName = `${names[0]} ${names[1]}`;
   } else {
-    formattedName = `${names[0]} ${names[1].split('')[0]} ${names[2]}`;
+    const half = Math.floor(names.length / 2);
+    const firstName = names[0];
+    const lastName = names[names.length - 1];
+    const middleName = regex.test(names[half])
+      ? names[half + 1] === lastName
+        ? names[half - 1]
+        : names[half + 1]
+      : names[half];
+
+    formattedName = `${firstName} ${middleName[0]} ${lastName}`;
   }
 
   return formattedName.toUpperCase();

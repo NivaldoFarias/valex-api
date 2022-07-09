@@ -1,4 +1,4 @@
-import { mapObjectToUpdateQuery } from '../utils/index';
+import { mapObjectToUpdateQuery } from '../utils/object.util';
 import client from '../config/database';
 
 import { CardInsertData, CardUpdateData } from '../types/card.type';
