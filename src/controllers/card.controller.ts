@@ -12,9 +12,10 @@ async function createCard(_req: Request, res: Response) {
   const body = res.locals.body;
   const employee: Employee = res.locals.employee;
 
-  await service.newCard(employee, body.cardType);
+  const securityCode = await service.newCard(employee, body.cardType);
 
-  res.sendStatus(201);
+  AppLog('Controller', 'Card created, security code sent');
+  res.status(201).send({ securityCode });
 }
 
 async function activateCard(_req: Request, res: Response) {
@@ -23,7 +24,7 @@ async function activateCard(_req: Request, res: Response) {
     body: { password },
   } = res.locals;
 
-  const updateCardData = await service.createBCryptPassword(card, password);
+  const updateCardData = service.createBCryptPassword(card, password);
   await repository.update(card.id as number, updateCardData);
 
   AppLog('Controller', 'Card activated');

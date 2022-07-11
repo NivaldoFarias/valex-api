@@ -71,6 +71,15 @@ async function activeCardQueries(
 
   const card: Card = await repository.findById(cardId);
 
+  if (!card) {
+    throw new AppError(
+      'Card not found',
+      404,
+      'Card not found',
+      'Ensure to provide a valid card id',
+    );
+  }
+
   res.locals.card = card;
   return next();
 }
@@ -95,7 +104,7 @@ async function activateCardValidations(
   }
   AppLog('Middleware', 'Card is not yet active');
 
-  if (service.validSecurityCode(card, securityCode)) {
+  if (!service.validSecurityCode(card, securityCode)) {
     throw new AppError(
       'Invalid security code',
       403,

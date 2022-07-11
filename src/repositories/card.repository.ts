@@ -97,7 +97,7 @@ async function update(id: number, cardData: CardUpdateData) {
     });
 
   AppLog('Repository', 'Update card');
-  client.query(
+  await client.query(
     `
     UPDATE cards
       SET ${cardColumns}

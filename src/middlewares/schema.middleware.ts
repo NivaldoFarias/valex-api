@@ -6,7 +6,7 @@ import AppLog from '../events/AppLog';
 
 function validateSchema(schema: Schema, endpoint: string) {
   return (req: Request, res: Response, next: NextFunction) => {
-    AppLog('Server', endpoint);
+    AppLog('Server', `Routing ...${endpoint}`);
     const result = schema.validate(req.body, { abortEarly: false });
 
     if (result.error) {
@@ -15,7 +15,10 @@ function validateSchema(schema: Schema, endpoint: string) {
         'Invalid Input',
         422,
         'Invalid Input',
-        error.details.map((detail) => detail.message).join(', '),
+        error.details
+          .map((detail) => detail.message)
+          .join(', ')
+          .replaceAll(`"`, `'`),
       );
     }
 

@@ -11,20 +11,21 @@ import Card from '../interfaces/card.interface';
 import './../config/setup';
 
 const cryptrSecret = process.env.CRYPTR_SECRET || 'secret';
-const SALT_ROUNDS = process.env.BCRYPT_SALT_ROUNDS || 10;
+const SALT_ROUNDS = Number(process.env.BCRYPT_SALT_ROUNDS) ?? 10;
 const CRYPTR = new Cryptr(cryptrSecret);
 
 async function newCard(employee: Employee, cardType: TransactionTypes) {
   const creditCardNumber = faker.finance.creditCardNumber();
   const cardHolderName = formatName(employee.fullName);
   const expirationDate = formatExpirationDate();
-  const cardCVV = CRYPTR.encrypt(faker.finance.creditCardCVV());
+  const cardCVV = faker.finance.creditCardCVV();
+  const securityCode = CRYPTR.encrypt(cardCVV);
 
   const cardData: Card = {
     employeeId: employee.id,
     number: creditCardNumber,
     cardholderName: cardHolderName,
-    securityCode: cardCVV,
+    securityCode: securityCode,
     expirationDate: expirationDate,
     password: undefined,
     isVirtual: true,
@@ -33,7 +34,8 @@ async function newCard(employee: Employee, cardType: TransactionTypes) {
     type: cardType,
   };
 
-  return await repository.insert(cardData);
+  await repository.insert(cardData);
+  return cardCVV;
 }
 
 function isCardAlreadyActive(card: Card) {
@@ -41,11 +43,13 @@ function isCardAlreadyActive(card: Card) {
 }
 
 function validSecurityCode(card: Card, securityCode: string) {
-  return CRYPTR.decrypt(card.securityCode) === securityCode;
+  const decrypted = CRYPTR.decrypt(card.securityCode);
+  return decrypted === securityCode;
 }
 
-async function createBCryptPassword(card: Card, password: string) {
-  const cryptPass = bcrypt.hashSync(password, SALT_ROUNDS);
+function createBCryptPassword(card: Card, password: string) {
+  const salt = bcrypt.genSaltSync(SALT_ROUNDS);
+  const cryptPass = bcrypt.hashSync(password, salt);
   return {
     employeeId: card.employeeId,
     number: card.number,
