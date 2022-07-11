@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { Schema } from 'joi';
 
-import AppError from '../config/error';
+import { AppError } from '../events/AppError';
 import AppLog from '../events/AppLog';
 
 function validateSchema(schema: Schema, endpoint: string) {
@@ -15,10 +15,7 @@ function validateSchema(schema: Schema, endpoint: string) {
         'Invalid Input',
         422,
         'Invalid Input',
-        error.details
-          .map((detail) => detail.message)
-          .join(', ')
-          .replaceAll(`"`, `'`),
+        error.details.map((detail) => detail.message.replaceAll(`"`, `'`)),
       );
     }
 

@@ -65,8 +65,10 @@ function newPaymentValidations(
   return next();
 
   function validatePassword() {
-    const decrypted = service.decryptPassword(password, cardPassword as string);
-    const invalidPassword = decrypted !== password;
+    const invalidPassword = service.decryptPassword(
+      password,
+      cardPassword as string,
+    );
 
     if (invalidPassword) {
       throw new AppError(

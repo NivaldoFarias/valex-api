@@ -1,5 +1,10 @@
-import { PaymentInsertData, PaymentWithBusinessName } from '../types/payment';
 import client from '../config/database';
+import AppLog from '../events/AppLog';
+
+import {
+  PaymentInsertData,
+  PaymentWithBusinessName,
+} from '../lib/types/payment';
 
 async function findByCardId(cardId: number) {
   const result = await client.query<PaymentWithBusinessName, [number]>(
@@ -19,10 +24,11 @@ async function findByCardId(cardId: number) {
 async function insert(paymentData: PaymentInsertData) {
   const { cardId, businessId, amount } = paymentData;
 
-  client.query<any, [number, number, number]>(
+  await client.query<any, [number, number, number]>(
     `INSERT INTO payments ("cardId", "businessId", amount) VALUES ($1, $2, $3)`,
     [cardId, businessId, amount],
   );
+  AppLog('Repository', 'Payment inserted');
 }
 
 export { findByCardId, insert };
