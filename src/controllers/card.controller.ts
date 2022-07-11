@@ -31,4 +31,24 @@ async function activateCard(_req: Request, res: Response) {
   return res.sendStatus(200);
 }
 
-export { createCard, activateCard };
+async function blockCard(_req: Request, res: Response) {
+  const card: Card = res.locals.card;
+
+  const updateCardData = { ...card, isBlocked: true };
+  await repository.update(card.id as number, updateCardData);
+
+  AppLog('Controller', 'Card blocked');
+  return res.sendStatus(200);
+}
+
+async function unblockCard(_req: Request, res: Response) {
+  const card: Card = res.locals.card;
+
+  const updateCardData = { ...card, isBlocked: false };
+  await repository.update(card.id as number, updateCardData);
+
+  AppLog('Controller', 'Card unblocked');
+  return res.sendStatus(200);
+}
+
+export { createCard, activateCard, blockCard, unblockCard };

@@ -8,11 +8,15 @@ import TransactionTypes from '../lib/types/transaction';
 import Employee from '../lib/interfaces/employee.interface';
 import Card from '../lib/interfaces/card.interface';
 
+import { CURRENT_YEAR, CURRENT_MONTH } from '../utils/constants.util';
 import './../config/setup';
+import AppError from '../config/error';
 
 const cryptrSecret = process.env.CRYPTR_SECRET || 'secret';
 const SALT_ROUNDS = Number(process.env.BCRYPT_SALT_ROUNDS) ?? 10;
 const CRYPTR = new Cryptr(cryptrSecret);
+
+// Export functions
 
 async function newCard(employee: Employee, cardType: TransactionTypes) {
   const creditCardNumber = faker.finance.creditCardNumber();
@@ -64,6 +68,45 @@ function createBCryptPassword(card: Card, password: string) {
   };
 }
 
+function isCardActive(password: string) {
+  if (!password) {
+    throw new AppError(
+      'Card is not active',
+      403,
+      'Card is not active',
+      'Ensure to provide a card that is active',
+    );
+  }
+}
+
+function isCardBlocked(isBlocked: boolean) {
+  if (isBlocked) {
+    throw new AppError(
+      `Card is blocked`,
+      403,
+      `Card is blocked`,
+      'The provided card is blocked',
+    );
+  }
+}
+
+function validExpirationDate(expirationDate: string) {
+  const [month, year] = expirationDate.split('/');
+  const invalidExpirationDate =
+    year < CURRENT_YEAR || (year === CURRENT_YEAR && month < CURRENT_MONTH);
+
+  if (invalidExpirationDate) {
+    throw new AppError(
+      `Invalid expiration date`,
+      403,
+      `Invalid expiration date`,
+      'The provided card is expired',
+    );
+  }
+}
+
+// Local functions
+
 function formatName(name: string) {
   const regex = /^(d[a,e,o,i])$/;
   const names = name.split(' ');
@@ -100,4 +143,7 @@ export {
   isCardAlreadyActive,
   validSecurityCode,
   createBCryptPassword,
+  isCardActive,
+  isCardBlocked,
+  validExpirationDate,
 };

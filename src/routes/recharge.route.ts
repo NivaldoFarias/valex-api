@@ -1,6 +1,7 @@
 import { Router } from 'express';
 
 import * as controller from '../controllers/recharge.controller';
+import * as middleware from '../middlewares/recharge.middleware';
 
 import validateSchema from '../middlewares/schema.middleware';
 import processHeader from '../middlewares/header.middleware';
@@ -14,7 +15,9 @@ const header = 'x-api-key';
 rechargeRouter.post(
   '/',
   validateSchema(rechargeSchema, `${endpoint}/`),
-  processHeader(header, endpoint),
+  processHeader(header, `${endpoint}/`),
+  middleware.newRechargeQueries,
+  middleware.newRechargeValidations,
   controller.newRecharge,
 );
 

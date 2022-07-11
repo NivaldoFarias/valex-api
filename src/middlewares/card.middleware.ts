@@ -22,7 +22,7 @@ async function newCardQueries(
   } = res.locals;
   AppLog('Middleware', 'Queries sent');
 
-  const [companyResult, employeeResult, cards]: [Company, Employee, Card[]] =
+  const [company, employee, cards]: [Company, Employee, Card[]] =
     await Promise.all([
       entity.findEntity('companies', 'Company', `"apiKey"`, apiKey),
       entity.findEntity('employees', 'Employee', `"id"`, employeeId),
@@ -30,8 +30,8 @@ async function newCardQueries(
     ]);
 
   res.locals.cards = cards;
-  res.locals.company = companyResult;
-  res.locals.employee = employeeResult;
+  res.locals.company = company;
+  res.locals.employee = employee;
   return next();
 }
 
@@ -59,11 +59,7 @@ function employeeHasOnlyOneCard(
   return next();
 }
 
-async function activeCardQueries(
-  _req: Request,
-  res: Response,
-  next: NextFunction,
-) {
+async function getCardData(_req: Request, res: Response, next: NextFunction) {
   const {
     body: { cardId },
   } = res.locals;
@@ -117,9 +113,51 @@ async function activateCardValidations(
   return next();
 }
 
+function blockCardValidations(
+  _req: Request,
+  res: Response,
+  next: NextFunction,
+) {
+  const card: Card = res.locals.card;
+  const { password, isBlocked, expirationDate } = card;
+
+  service.isCardActive(password as string);
+  AppLog('Middleware', 'Card is active');
+
+  service.isCardBlocked(isBlocked);
+  AppLog('Middleware', 'Card is not blocked');
+
+  service.validExpirationDate(expirationDate);
+  AppLog('Middleware', 'Valid Expiration Date');
+
+  return next();
+}
+
+function unblockCardValidations(
+  _req: Request,
+  res: Response,
+  next: NextFunction,
+) {
+  const card: Card = res.locals.card;
+  const { password, isBlocked, expirationDate } = card;
+
+  service.isCardActive(password as string);
+  AppLog('Middleware', 'Card is active');
+
+  service.isCardBlocked(isBlocked);
+  AppLog('Middleware', 'Card is not blocked');
+
+  service.validExpirationDate(expirationDate);
+  AppLog('Middleware', 'Valid Expiration Date');
+
+  return next();
+}
+
 export {
   newCardQueries,
   employeeHasOnlyOneCard,
-  activeCardQueries,
+  getCardData,
   activateCardValidations,
+  blockCardValidations,
+  unblockCardValidations,
 };

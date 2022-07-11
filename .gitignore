@@ -135,3 +135,6 @@ dist
 
 # Wakatime
 .wakatime-project
+
+# Template files
+**.template.**
