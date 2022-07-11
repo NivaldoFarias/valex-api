@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
 
-import * as service from '../services/purchase.service';
+import * as service from '../services/payment.service';
 import * as entity from '../utils/entity.util';
 
-import Card from '../interfaces/card.interface';
-import Business from '../interfaces/business.interface';
+import Card from '../lib/interfaces/card.interface';
+import Business from '../lib/interfaces/business.interface';
 
 import AppError from '../config/error';
 import AppLog from '../events/AppLog';
@@ -12,7 +12,7 @@ import AppLog from '../events/AppLog';
 const CURRENT_YEAR = new Date().getFullYear().toString().slice(2);
 const CURRENT_MONTH = new Date().getMonth().toString();
 
-async function newPurchaseQueries(
+async function newPaymentQueries(
   _req: Request,
   res: Response,
   next: NextFunction,
@@ -35,7 +35,7 @@ async function newPurchaseQueries(
   return next();
 }
 
-function newPurchaseValidations(
+function newPaymentValidations(
   _req: Request,
   res: Response,
   next: NextFunction,
@@ -60,6 +60,7 @@ function newPurchaseValidations(
   validExpirationDate();
   isCardBlocked();
   cardTypeCorrespondsToBusinessType();
+  hasEnoughBalance();
 
   return next();
 
@@ -75,6 +76,8 @@ function newPurchaseValidations(
         'Ensure to provide a valid password',
       );
     }
+
+    return AppLog('Middleware', 'Vallid Password');
   }
 
   function validExpirationDate() {
@@ -90,6 +93,8 @@ function newPurchaseValidations(
         'The provided card is expired',
       );
     }
+
+    return AppLog('Middleware', 'Valid Expiration Date');
   }
 
   function isCardBlocked() {
@@ -101,6 +106,8 @@ function newPurchaseValidations(
         'The provided card is blocked',
       );
     }
+
+    return AppLog('Middleware', 'Card is not blocked');
   }
 
   function cardTypeCorrespondsToBusinessType() {
@@ -114,7 +121,14 @@ function newPurchaseValidations(
         'The provided card type does not correspond to the business type',
       );
     }
+
+    return AppLog('Middleware', 'Card type corresponds to business type');
+  }
+
+  function hasEnoughBalance() {
+    //  TODO: Implement
+    return AppLog('Middleware', 'Has enough balance');
   }
 }
 
-export { newPurchaseQueries, newPurchaseValidations };
+export { newPaymentQueries, newPaymentValidations };

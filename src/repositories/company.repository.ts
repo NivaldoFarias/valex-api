@@ -1,4 +1,4 @@
-import Company from '../interfaces/company.interface';
+import Company from '../lib/interfaces/company.interface';
 import client from '../config/database';
 
 async function findByApiKey(apiKey: string) {

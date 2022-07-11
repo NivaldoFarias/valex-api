@@ -1,5 +1,5 @@
 import client from '../config/database';
-import Business from '../interfaces/business.interface';
+import Business from '../lib/interfaces/business.interface';
 
 async function findById(id: number) {
   const result = await client.query<Business, [number]>(

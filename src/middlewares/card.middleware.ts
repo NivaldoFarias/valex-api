@@ -7,9 +7,9 @@ import * as entity from '../utils/entity.util';
 import AppError from '../config/error';
 import AppLog from '../events/AppLog';
 
-import Employee from '../interfaces/employee.interface';
-import Company from '../interfaces/company.interface';
-import Card from '../interfaces/card.interface';
+import Employee from '../lib/interfaces/employee.interface';
+import Company from '../lib/interfaces/company.interface';
+import Card from '../lib/interfaces/card.interface';
 
 async function newCardQueries(
   _req: Request,

@@ -4,9 +4,9 @@ import bcrypt from 'bcrypt';
 
 import * as repository from '../repositories/card.repository';
 
-import TransactionTypes from '../types/transaction.type';
-import Employee from '../interfaces/employee.interface';
-import Card from '../interfaces/card.interface';
+import TransactionTypes from '../lib/types/transaction';
+import Employee from '../lib/interfaces/employee.interface';
+import Card from '../lib/interfaces/card.interface';
 
 import './../config/setup';
 

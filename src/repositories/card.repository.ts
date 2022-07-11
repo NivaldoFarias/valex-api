@@ -1,9 +1,10 @@
-import { mapObjectToUpdateQuery } from '../utils/object.util';
 import client from '../config/database';
 
-import { CardInsertData, CardUpdateData } from '../types/card.type';
-import TransactionTypes from '../types/transaction.type';
-import Card from '../interfaces/card.interface';
+import { CardInsertData, CardUpdateData } from '../lib/types/card';
+import TransactionTypes from '../lib/types/transaction';
+import Card from '../lib/interfaces/card.interface';
+
+import { mapObjectToUpdateQuery } from '../utils/object.util';
 import AppLog from '../events/AppLog';
 
 async function find() {

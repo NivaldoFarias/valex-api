@@ -3,8 +3,8 @@ import { Request, Response } from 'express';
 import * as repository from '../repositories/card.repository';
 import * as service from '../services/card.service';
 
-import Employee from '../interfaces/employee.interface';
-import Card from '../interfaces/card.interface';
+import Employee from '../lib/interfaces/employee.interface';
+import Card from '../lib/interfaces/card.interface';
 
 import AppLog from '../events/AppLog';
 

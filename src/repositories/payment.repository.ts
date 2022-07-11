@@ -1,14 +1,5 @@
+import { PaymentInsertData, PaymentWithBusinessName } from '../types/payment';
 import client from '../config/database';
-
-interface Payment {
-  id: number;
-  cardId: number;
-  businessId: number;
-  timestamp: Date;
-  amount: number;
-}
-type PaymentWithBusinessName = Payment & { businessName: string };
-type PaymentInsertData = Omit<Payment, 'id' | 'timestamp'>;
 
 async function findByCardId(cardId: number) {
   const result = await client.query<PaymentWithBusinessName, [number]>(

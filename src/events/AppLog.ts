@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 
-import LogTypes from '../types/log.type';
-import Logs from '../interfaces/log.interface';
+import LogTypes from '../lib/types/log';
+import Logs from '../lib/interfaces/log.interface';
 
 const types: Logs = {
   Middleware: 'magenta',

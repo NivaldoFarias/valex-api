@@ -1,4 +1,4 @@
-import TransactionTypes from '../types/transaction.type';
+import TransactionTypes from '../types/transaction';
 
 interface Business {
   id: number;

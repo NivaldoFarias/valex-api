@@ -1,4 +1,4 @@
-import Employee from '../interfaces/employee.interface';
+import Employee from '../lib/interfaces/employee.interface';
 import client from '../config/database';
 
 async function findById(id: number) {
