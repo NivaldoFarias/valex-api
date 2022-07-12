@@ -8,7 +8,10 @@
     "start": "node dist/server.js",
     "ts:start": "ts-node src/server.ts",
     "build": "tsc -p tsconfig.json",
+    "tsc": "tsc",
+    "postinstall": "npm run tsc",
     "dev": "tsnd --respawn --transpile-only src/server.ts",
+    "debug": "tsnd --respawn --transpile-only --debug src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
