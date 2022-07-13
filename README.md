@@ -88,6 +88,8 @@ You can now access the API's endpoints by navigating to `http://localhost:5000/`
 
 # API Reference
 
+In this section, you will find the API's endpoints and their respective descriptions, along with the request and response examples. All request and response data is in JSON format.
+
 ## Cards
 
 ### &nbsp; ‣ &nbsp; Create a card
