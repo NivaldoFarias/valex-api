@@ -34,8 +34,7 @@
   - [Cards](#cards)
   - [Payments](#payments)
   - [Recharges](#recharges)
-- [Study Playlist](#study-playlist)
-- [Contact](#contact)
+- [Contact & Study Playlist](#contact--study-playlist)
 
 <!-- Getting Started -->
 
@@ -305,18 +304,15 @@ In this section, you will find the API's endpoints and their respective descript
 |   **422**   |     Invalid Input     | `error: { message, details }` |
 |   **500**   | Internal Server Error | `error: { message, details }` |
 
-### Study Playlist
+<!-- Contact & Study Playlist -->
 
-In this section I included all Youtube content I used or refered to while studying for this project. Keep in mind that most of these videos contain information that was not previously studied during class, which may affect some parts of the code that contain these _extras_.
+# Contact & Study Playlist
 
-<a href="https://youtube.com/playlist?list=PLoZj33I2-ANTWqU331l3ZGlZV8I7rr5ZN">![Youtube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)</a>
-
-<!-- CONTACT -->
-
-### Contact
+In the following Youtube link I included all Youtube content I used or refered to while studying for this project. Hope you enjoy it!
 
 [![LinkedIn][linkedin-shield]][linkedin-url]
 [![Slack][slack-shield]][slack-url]
+[![Youtube][youtube-shield]][youtube-url]
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
@@ -324,3 +320,5 @@ In this section I included all Youtube content I used or refered to while studyi
 [linkedin-url]: https://www.linkedin.com/in/nivaldofarias/
 [slack-shield]: https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white
 [slack-url]: https://driventurmas.slack.com/team/U02T6V2D8D8/
+[youtube-shield]: https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white
+[youtube-url]: https://youtube.com/playlist?list=PLoZj33I2-ANTWqU331l3ZGlZV8I7rr5ZN
