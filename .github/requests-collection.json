@@ -1,0 +1,269 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2022-07-13T00:22:21.816Z",
+  "__export_source": "insomnia.desktop.app:v2022.3.0",
+  "resources": [
+    {
+      "_id": "req_8de69519950f40f4be5336016b43a488",
+      "parentId": "fld_b7f8f40f65a74796b3fbd2fffa6a685f",
+      "modified": 1657671599222,
+      "created": 1657561400700,
+      "url": "{{ _.url }}{{ _.enpoint }}/new",
+      "name": "Create",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"card\": {\n\t\t\"id\": 4,\n\t\t\"password\": \"1234\"\n\t},\n\t\"businessId\": 5,\n\t\"amount\": 1000\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_d502d71d345e45bab51b8123a1343448"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657561400700,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_b7f8f40f65a74796b3fbd2fffa6a685f",
+      "parentId": "wrk_d0dcc2dd8fe54998b943a0e4e2def610",
+      "modified": 1657561392644,
+      "created": 1657561372532,
+      "name": "Payments",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1657561372532,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_d0dcc2dd8fe54998b943a0e4e2def610",
+      "parentId": null,
+      "modified": 1657307858323,
+      "created": 1657307858323,
+      "name": "Valex API",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_2cbfc7d72e77446d9ac1cb3d3888ea0d",
+      "parentId": "fld_992afabc96b34b5e8ef344a2fef1ad51",
+      "modified": 1657671602526,
+      "created": 1657563343573,
+      "url": "{{ _.url }}{{ _.enpoint }}/new",
+      "name": "Create",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"cardId\": 4,\n\t\"amount\": 1000\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_d502d71d345e45bab51b8123a1343448"
+        },
+        {
+          "id": "pair_c7d5ae9ae2f1485c8078a01e179137c6",
+          "name": "x-api-key",
+          "value": "{{ _['x-api-key'] }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657561400700,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_992afabc96b34b5e8ef344a2fef1ad51",
+      "parentId": "wrk_d0dcc2dd8fe54998b943a0e4e2def610",
+      "modified": 1657563343568,
+      "created": 1657563343568,
+      "name": "Recharge",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1657434639147.5,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_64e420fd4c274d3bb22986d09d21e562",
+      "parentId": "fld_72d3809204dd46579f39e452ba69a4d3",
+      "modified": 1657671584008,
+      "created": 1657548965318,
+      "url": "{{ _.url }}{{ _.enpoint }}/create",
+      "name": "Create",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"employeeId\": 1,\n\t\"cardType\": \"health\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_85cf764ebbc744f482c2de2802853486"
+        },
+        {
+          "id": "pair_c601341f6a9c48bdb660b443d35cb109",
+          "name": "x-api-key",
+          "value": "{{ _['x-api-key'] }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657549021589,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_72d3809204dd46579f39e452ba69a4d3",
+      "parentId": "wrk_d0dcc2dd8fe54998b943a0e4e2def610",
+      "modified": 1657561386250,
+      "created": 1657307905763,
+      "name": "Cards",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": {},
+      "metaSortKey": -1657307905763,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_61607747d356484ba3532ab2c9554661",
+      "parentId": "fld_72d3809204dd46579f39e452ba69a4d3",
+      "modified": 1657636580322,
+      "created": 1657549021539,
+      "url": "{{ _.url }}{{ _.enpoint }}/activate",
+      "name": "Activate",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"cardId\": 4,\n\t\"securityCode\": \"165\",\n\t\"password\": \"1234\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_b1302cc2064d495d8bc95c69b26178de"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657549021539,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_5d6add886ad432291e0a32fd6ffdc2d77c079071",
+      "parentId": "wrk_d0dcc2dd8fe54998b943a0e4e2def610",
+      "modified": 1657563431740,
+      "created": 1657307858350,
+      "name": "Base Environment",
+      "data": {
+        "url": "http://localhost:5000",
+        "heroku": "https://valex-project-api.herokuapp.com",
+        "x-api-key": "zadKLNx.DzvOVjQH01TumGl2urPjPQSxUbf67vs0"
+      },
+      "dataPropertyOrder": { "&": ["url", "x-api-key"] },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1657307858350,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_5d6add886ad432291e0a32fd6ffdc2d77c079071",
+      "parentId": "wrk_d0dcc2dd8fe54998b943a0e4e2def610",
+      "modified": 1657307858352,
+      "created": 1657307858352,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_6cd422b892b24424b19c9690c921269b",
+      "parentId": "wrk_d0dcc2dd8fe54998b943a0e4e2def610",
+      "modified": 1657307858332,
+      "created": 1657307858332,
+      "fileName": "Valex API",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    },
+    {
+      "_id": "env_3e3d7ad442f649f19e84cce86b0694b4",
+      "parentId": "env_5d6add886ad432291e0a32fd6ffdc2d77c079071",
+      "modified": 1657561470458,
+      "created": 1657307971828,
+      "name": "Cards",
+      "data": { "enpoint": "/cards" },
+      "dataPropertyOrder": { "&": ["enpoint"] },
+      "color": "#9d4848",
+      "isPrivate": false,
+      "metaSortKey": 1657307971828,
+      "_type": "environment"
+    },
+    {
+      "_id": "env_54d9f9b2ddc1487c818ee4e374f5ff3c",
+      "parentId": "env_5d6add886ad432291e0a32fd6ffdc2d77c079071",
+      "modified": 1657563416376,
+      "created": 1657561474781,
+      "name": "Payments",
+      "data": { "enpoint": "/payments" },
+      "dataPropertyOrder": { "&": ["enpoint"] },
+      "color": "#64b224",
+      "isPrivate": false,
+      "metaSortKey": 1657307971878,
+      "_type": "environment"
+    },
+    {
+      "_id": "env_58fcba81b0b64212abc4698d827e482a",
+      "parentId": "env_5d6add886ad432291e0a32fd6ffdc2d77c079071",
+      "modified": 1657563377247,
+      "created": 1657563354634,
+      "name": "Recharge",
+      "data": { "enpoint": "/recharges" },
+      "dataPropertyOrder": { "&": ["enpoint"] },
+      "color": "#cb7d10",
+      "isPrivate": false,
+      "metaSortKey": 1657307971928,
+      "_type": "environment"
+    }
+  ]
+}

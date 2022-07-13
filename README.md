@@ -28,7 +28,9 @@
 
 # Table of Contents
 
+- [Getting Started](#getting-started)
 - [Routes](#routes)
+- [API Reference](#api-reference)
   - [Cards](#cards)
   - [Payments](#payments)
   - [Recharges](#recharges)
@@ -36,6 +38,32 @@
 - [Contact](#contact)
 
 <!-- Getting Started -->
+
+# Getting Started
+
+This Api can be used in two different ways: by cloning the project or by using your preferred client, such as [Insomnia](https://insomnia.rest/) or [Postman](https://www.getpostman.com/).
+
+To clone the project, run the following command:
+
+```git
+git clone https://github.com/NivaldoFarias/valex-api.git
+```
+
+Then, navigate to the project folder and run the following command:
+
+```git
+npm install
+```
+
+Finally, start the server:
+
+```git
+npm start
+```
+
+You can now access the API's endpoints by navigating to `http://localhost:5000/` or to the deployed URL `https://valex-project-api.herokuapp.com/`. If needed, import one of the provided [Request Collections](https://github.com/NivaldoFarias/valex-api/tree/main/.github) files into your preferred client and test the endpoints!
+
+###### ps.: Highly recommend using the request collections to test the API.
 
 <!-- Routes -->
 
@@ -56,9 +84,9 @@
 
 - [New recharge](#‣-new-recharge)
 
-<!-- Study Playlist -->
+<!-- API Reference -->
 
-# Usage
+# API Reference
 
 ## Cards
 
