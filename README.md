@@ -29,8 +29,8 @@
 # Table of Contents
 
 - [Getting Started](#getting-started)
-- [Routes](#routes)
 - [API Reference](#api-reference)
+  - [Routes](#routes)
   - [Cards](#cards)
   - [Payments](#payments)
   - [Recharges](#recharges)
@@ -64,9 +64,15 @@ You can now access the API's endpoints by navigating to `http://localhost:5000/`
 
 ###### ps.: Highly recommend using the request collections to test the API.
 
+<!-- API Reference -->
+
+# API Reference
+
+In this section, you will find the API's endpoints and their respective descriptions, along with the request and response examples. All data is sent and received as JSON.
+
 <!-- Routes -->
 
-# Routes
+## Routes
 
 ### [Cards](#cards) _`/cards`_
 
@@ -82,12 +88,6 @@ You can now access the API's endpoints by navigating to `http://localhost:5000/`
 ### [Recharges](#recharges) _`/recharges`_
 
 - [New recharge](#---new-recharge)
-
-<!-- API Reference -->
-
-# API Reference
-
-In this section, you will find the API's endpoints and their respective descriptions, along with the request and response examples. All data is sent and received as JSON.
 
 ## Cards
 
