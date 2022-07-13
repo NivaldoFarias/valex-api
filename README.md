@@ -71,18 +71,18 @@ You can now access the API's endpoints by navigating to `http://localhost:5000/`
 
 ### [Cards](#cards) _`/cards`_
 
-- [Create a card](#‣-create-a-card)
-- [Activate a card](#‣-activate-a-card)
-- [Block a card](#‣-block-a-card)
-- [Unblock a card](#‣-unblock-a-card)
+- [Create a card](#---create-a-card)
+- [Activate a card](#---activate-a-card)
+- [Block a card](#---block-a-card)
+- [Unblock a card](#---unblock-a-card)
 
 ### [Payments](#payments) _`/payments`_
 
-- [New payment](#‣-new-payment)
+- [New payment](#---new-payment)
 
 ### [Recharges](#recharges) _`/recharges`_
 
-- [New recharge](#‣-new-recharge)
+- [New recharge](#---new-recharge)
 
 <!-- API Reference -->
 
@@ -94,7 +94,7 @@ In this section, you will find the API's endpoints and their respective descript
 
 ### &nbsp; ‣ &nbsp; Create a card
 
-###### &nbsp; POST _`/cards/create`_
+###### &nbsp; &nbsp; POST _`/cards/create`_
 
 #### &nbsp; &nbsp; ☰ &nbsp; Request
 
@@ -130,7 +130,7 @@ In this section, you will find the API's endpoints and their respective descript
 
 ### &nbsp; ‣ &nbsp; Activate a card
 
-###### &nbsp; POST _`/cards/activate`_
+###### &nbsp; &nbsp; POST _`/cards/activate`_
 
 #### &nbsp; &nbsp; ☰ &nbsp; Request
 
@@ -164,7 +164,7 @@ In this section, you will find the API's endpoints and their respective descript
 
 ### &nbsp; ‣ &nbsp; Block a card
 
-###### &nbsp; POST _`/cards/block`_
+###### &nbsp; &nbsp; POST _`/cards/block`_
 
 #### &nbsp; &nbsp; ☰ &nbsp; Request
 
@@ -197,7 +197,7 @@ In this section, you will find the API's endpoints and their respective descript
 
 ### &nbsp; ‣ &nbsp; Unblock a card
 
-###### &nbsp; POST _`/cards/unblock`_
+###### &nbsp; &nbsp; POST _`/cards/unblock`_
 
 #### &nbsp; &nbsp; ☰ &nbsp; Request
 
@@ -232,7 +232,7 @@ In this section, you will find the API's endpoints and their respective descript
 
 ### &nbsp; ‣ &nbsp; New payment
 
-###### &nbsp; POST _`/payments/new`_
+###### &nbsp; &nbsp; POST _`/payments/new`_
 
 #### &nbsp; &nbsp; ☰ &nbsp; Request
 
@@ -269,7 +269,7 @@ In this section, you will find the API's endpoints and their respective descript
 
 ## Recharges
 
-### ‣ &nbsp; New recharge
+### &nbsp; ‣ &nbsp; New recharge
 
 ###### &nbsp; &nbsp; POST _`/recharges/new`_
 
