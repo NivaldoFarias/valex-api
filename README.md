@@ -96,15 +96,20 @@ You can now access the API's endpoints by navigating to `http://localhost:5000/`
 
 #### &nbsp; &nbsp; ☰ &nbsp; Request
 
+###### Body
+
 ```json
-// body
 {
   "employeeId": "1",
   "cardType": "health"
 }
+```
 
-// headers
+###### Headers
+
+```json
 {
+  "Content-Type": "application/json",
   "x-api-key": "this-is-a-needlessly-long-placeholder-api-key"
 }
 ```
@@ -127,11 +132,21 @@ You can now access the API's endpoints by navigating to `http://localhost:5000/`
 
 #### &nbsp; &nbsp; ☰ &nbsp; Request
 
+###### Body
+
 ```json
 {
   "cardId": "3",
   "securityCode": "616",
   "password": "1234"
+}
+```
+
+###### Headers
+
+```json
+{
+  "Content-Type": "application/json"
 }
 ```
 
@@ -151,10 +166,20 @@ You can now access the API's endpoints by navigating to `http://localhost:5000/`
 
 #### &nbsp; &nbsp; ☰ &nbsp; Request
 
+###### Body
+
 ```json
 {
   "cardId": "3",
   "password": "1234"
+}
+```
+
+###### Headers
+
+```json
+{
+  "Content-Type": "application/json"
 }
 ```
 
@@ -174,10 +199,20 @@ You can now access the API's endpoints by navigating to `http://localhost:5000/`
 
 #### &nbsp; &nbsp; ☰ &nbsp; Request
 
+###### Body
+
 ```json
 {
   "cardId": "3",
   "password": "1234"
+}
+```
+
+###### Headers
+
+```json
+{
+  "Content-Type": "application/json"
 }
 ```
 
@@ -199,6 +234,8 @@ You can now access the API's endpoints by navigating to `http://localhost:5000/`
 
 #### &nbsp; &nbsp; ☰ &nbsp; Request
 
+###### Body
+
 ```json
 {
   "card": {
@@ -207,6 +244,14 @@ You can now access the API's endpoints by navigating to `http://localhost:5000/`
   },
   "businessId": 5,
   "amount": 1000
+}
+```
+
+###### Headers
+
+```json
+{
+  "Content-Type": "application/json"
 }
 ```
 
@@ -228,15 +273,20 @@ You can now access the API's endpoints by navigating to `http://localhost:5000/`
 
 #### &nbsp; &nbsp; ☰ &nbsp; Request
 
+###### Body
+
 ```json
-// body
 {
   "cardId": 3,
   "amount": 1000
 }
+```
 
-// headers
+###### Headers
+
+```json
 {
+  "Content-Type": "application/json",
   "x-api-key": "this-is-a-needlessly-long-placeholder-api-key"
 }
 ```
