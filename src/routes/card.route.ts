@@ -18,7 +18,7 @@ const cardRequestEndpoint = `/create`;
 cardRouter.post(
   cardRequestEndpoint,
   validateSchema(cardRequestSchema, endpoint + cardRequestEndpoint),
-  processHeader(header, `${endpoint}/create`),
+  processHeader(header, endpoint + cardRequestEndpoint),
   middleware.newCardQueries,
   middleware.employeeHasOnlyOneCard,
   controller.createCard,

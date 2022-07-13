@@ -24,9 +24,206 @@
   
 </div>
 
+<!-- Table of Contents -->
+
+# Table of Contents
+
+- [Routes](#routes)
+  - [Cards](#cards)
+  - [Payments](#payments)
+  - [Recharges](#recharges)
+- [Study Playlist](#study-playlist)
+- [Contact](#contact)
+
+<!-- Getting Started -->
+
+<!-- Routes -->
+
+# Routes
+
+### [Cards](#cards) _`/cards`_
+
+- [Create a card](#‣-create-a-card)
+- [Activate a card](#‣-activate-a-card)
+- [Block a card](#‣-block-a-card)
+- [Unblock a card](#‣-unblock-a-card)
+
+### [Payments](#payments) _`/payments`_
+
+- [New payment](#‣-new-payment)
+
+### [Recharges](#recharges) _`/recharges`_
+
+- [New recharge](#‣-new-recharge)
+
 <!-- Study Playlist -->
 
-#
+# Usage
+
+## Cards
+
+### &nbsp; ‣ &nbsp; Create a card
+
+###### &nbsp; POST _`/cards/create`_
+
+#### &nbsp; &nbsp; ☰ &nbsp; Request
+
+```json
+// body
+{
+  "employeeId": "1",
+  "cardType": "health"
+}
+
+// headers
+{
+  "x-api-key": "this-is-a-needlessly-long-placeholder-api-key"
+}
+```
+
+#### &nbsp; &nbsp; ☰ &nbsp; Responses
+
+| Status Code |      Description      |          Properties           |
+| :---------: | :-------------------: | :---------------------------: |
+|   **201**   |        Created        |   `data: { securityCode }`    |
+|   **400**   |    Missing Headers    | `error: { message, details }` |
+|   **401**   |    Unauthenticated    | `error: { message, details }` |
+|   **403**   |       Forbidden       | `error: { message, details }` |
+|   **404**   |       Not Found       | `error: { message, details }` |
+|   **422**   |     Invalid Input     | `error: { message, details }` |
+|   **500**   | Internal Server Error | `error: { message, details }` |
+
+### &nbsp; ‣ &nbsp; Activate a card
+
+###### &nbsp; POST _`/cards/activate`_
+
+#### &nbsp; &nbsp; ☰ &nbsp; Request
+
+```json
+{
+  "cardId": "3",
+  "securityCode": "616",
+  "password": "1234"
+}
+```
+
+#### &nbsp; &nbsp; ☰ &nbsp; Responses
+
+| Status Code |      Description      |          Properties           |
+| :---------: | :-------------------: | :---------------------------: |
+|   **200**   |          OK           |          `data: {}`           |
+|   **403**   |       Forbidden       | `error: { message, details }` |
+|   **404**   |       Not Found       | `error: { message, details }` |
+|   **422**   |     Invalid Input     | `error: { message, details }` |
+|   **500**   | Internal Server Error | `error: { message, details }` |
+
+### &nbsp; ‣ &nbsp; Block a card
+
+###### &nbsp; POST _`/cards/block`_
+
+#### &nbsp; &nbsp; ☰ &nbsp; Request
+
+```json
+{
+  "cardId": "3",
+  "password": "1234"
+}
+```
+
+#### &nbsp; &nbsp; ☰ &nbsp; Responses
+
+| Status Code |      Description      |          Properties           |
+| :---------: | :-------------------: | :---------------------------: |
+|   **200**   |          OK           |          `data: {}`           |
+|   **403**   |       Forbidden       | `error: { message, details }` |
+|   **404**   |       Not Found       | `error: { message, details }` |
+|   **422**   |     Invalid Input     | `error: { message, details }` |
+|   **500**   | Internal Server Error | `error: { message, details }` |
+
+### &nbsp; ‣ &nbsp; Unblock a card
+
+###### &nbsp; POST _`/cards/unblock`_
+
+#### &nbsp; &nbsp; ☰ &nbsp; Request
+
+```json
+{
+  "cardId": "3",
+  "password": "1234"
+}
+```
+
+#### &nbsp; &nbsp; ☰ &nbsp; Responses
+
+| Status Code |      Description      |          Properties           |
+| :---------: | :-------------------: | :---------------------------: |
+|   **200**   |          OK           |          `data: {}`           |
+|   **403**   |       Forbidden       | `error: { message, details }` |
+|   **404**   |       Not Found       | `error: { message, details }` |
+|   **422**   |     Invalid Input     | `error: { message, details }` |
+|   **500**   | Internal Server Error | `error: { message, details }` |
+
+## Payments
+
+### &nbsp; ‣ &nbsp; New payment
+
+###### &nbsp; POST _`/payments/new`_
+
+#### &nbsp; &nbsp; ☰ &nbsp; Request
+
+```json
+{
+  "card": {
+    "id": 3,
+    "password": "1234"
+  },
+  "businessId": 5,
+  "amount": 1000
+}
+```
+
+#### &nbsp; &nbsp; ☰ &nbsp; Responses
+
+| Status Code |      Description      |          Properties           |
+| :---------: | :-------------------: | :---------------------------: |
+|   **201**   |        Created        |          `data: {}`           |
+|   **403**   |       Forbidden       | `error: { message, details }` |
+|   **404**   |       Not Found       | `error: { message, details }` |
+|   **422**   |     Invalid Input     | `error: { message, details }` |
+|   **500**   | Internal Server Error | `error: { message, details }` |
+
+## Recharges
+
+### ‣ &nbsp; New recharge
+
+###### &nbsp; &nbsp; POST _`/recharges/new`_
+
+#### &nbsp; &nbsp; ☰ &nbsp; Request
+
+```json
+// body
+{
+  "cardId": 3,
+  "amount": 1000
+}
+
+// headers
+{
+  "x-api-key": "this-is-a-needlessly-long-placeholder-api-key"
+}
+```
+
+#### &nbsp; &nbsp; ☰ &nbsp; Responses
+
+| Status Code |      Description      |          Properties           |
+| :---------: | :-------------------: | :---------------------------: |
+|   **201**   |        Created        |          `data: {}`           |
+|   **400**   |    Missing Headers    | `error: { message, details }` |
+|   **401**   |    Unauthenticated    | `error: { message, details }` |
+|   **403**   |       Forbidden       | `error: { message, details }` |
+|   **404**   |       Not Found       | `error: { message, details }` |
+|   **422**   |     Invalid Input     | `error: { message, details }` |
+|   **500**   | Internal Server Error | `error: { message, details }` |
 
 ### Study Playlist
 

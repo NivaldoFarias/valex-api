@@ -18,6 +18,14 @@ async function findEntity(
   const row = result.rows[0];
 
   if (!row) {
+    if (column === 'apiKey') {
+      throw new AppError(
+        'Invalid API key',
+        401,
+        'Invalid API key',
+        'Ensure to provide a valid API key',
+      );
+    }
     throw new AppError(
       `${entity} not found`,
       404,

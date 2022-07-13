@@ -12,10 +12,11 @@ const rechargeRouter = Router();
 const endpoint = '/recharges';
 const header = 'x-api-key';
 
+const newRechargeEndpoint = '/new';
 rechargeRouter.post(
-  '/',
-  validateSchema(rechargeSchema, `${endpoint}/`),
-  processHeader(header, `${endpoint}/`),
+  newRechargeEndpoint,
+  validateSchema(rechargeSchema, endpoint + newRechargeEndpoint),
+  processHeader(header, endpoint + newRechargeEndpoint),
   middleware.newRechargeQueries,
   middleware.newRechargeValidations,
   controller.newRecharge,

@@ -9,9 +9,10 @@ import paymentSchema from '../models/payment.model';
 const paymentRouter = Router();
 const endpoint = '/payments';
 
+const newPaymentEndpoint = '/new';
 paymentRouter.post(
-  '/',
-  validateSchema(paymentSchema, `${endpoint}/`),
+  newPaymentEndpoint,
+  validateSchema(paymentSchema, endpoint + newPaymentEndpoint),
   middleware.newPaymentQueries,
   middleware.newPaymentValidations,
   controller.newPayment,
