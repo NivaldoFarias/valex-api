@@ -96,7 +96,7 @@ In this section, you will find the API's endpoints and their respective descript
 
 ###### &nbsp; &nbsp; POST _`/cards/create`_
 
-#### &nbsp; &nbsp; ☰ &nbsp; Request
+### &nbsp; ☰ &nbsp; Request
 
 ###### Body
 
@@ -116,7 +116,7 @@ In this section, you will find the API's endpoints and their respective descript
 }
 ```
 
-#### &nbsp; &nbsp; ☰ &nbsp; Responses
+### &nbsp; ☰ &nbsp; Responses
 
 | Status Code |      Description      |          Properties           |
 | :---------: | :-------------------: | :---------------------------: |
@@ -132,7 +132,7 @@ In this section, you will find the API's endpoints and their respective descript
 
 ###### &nbsp; &nbsp; POST _`/cards/activate`_
 
-#### &nbsp; &nbsp; ☰ &nbsp; Request
+### &nbsp; ☰ &nbsp; Request
 
 ###### Body
 
@@ -152,7 +152,7 @@ In this section, you will find the API's endpoints and their respective descript
 }
 ```
 
-#### &nbsp; &nbsp; ☰ &nbsp; Responses
+### &nbsp; ☰ &nbsp; Responses
 
 | Status Code |      Description      |          Properties           |
 | :---------: | :-------------------: | :---------------------------: |
@@ -166,7 +166,7 @@ In this section, you will find the API's endpoints and their respective descript
 
 ###### &nbsp; &nbsp; POST _`/cards/block`_
 
-#### &nbsp; &nbsp; ☰ &nbsp; Request
+### &nbsp; ☰ &nbsp; Request
 
 ###### Body
 
@@ -185,7 +185,7 @@ In this section, you will find the API's endpoints and their respective descript
 }
 ```
 
-#### &nbsp; &nbsp; ☰ &nbsp; Responses
+### &nbsp; ☰ &nbsp; Responses
 
 | Status Code |      Description      |          Properties           |
 | :---------: | :-------------------: | :---------------------------: |
@@ -199,7 +199,7 @@ In this section, you will find the API's endpoints and their respective descript
 
 ###### &nbsp; &nbsp; POST _`/cards/unblock`_
 
-#### &nbsp; &nbsp; ☰ &nbsp; Request
+### &nbsp; ☰ &nbsp; Request
 
 ###### Body
 
@@ -218,7 +218,7 @@ In this section, you will find the API's endpoints and their respective descript
 }
 ```
 
-#### &nbsp; &nbsp; ☰ &nbsp; Responses
+### &nbsp; ☰ &nbsp; Responses
 
 | Status Code |      Description      |          Properties           |
 | :---------: | :-------------------: | :---------------------------: |
@@ -234,7 +234,7 @@ In this section, you will find the API's endpoints and their respective descript
 
 ###### &nbsp; &nbsp; POST _`/payments/new`_
 
-#### &nbsp; &nbsp; ☰ &nbsp; Request
+### &nbsp; ☰ &nbsp; Request
 
 ###### Body
 
@@ -257,7 +257,7 @@ In this section, you will find the API's endpoints and their respective descript
 }
 ```
 
-#### &nbsp; &nbsp; ☰ &nbsp; Responses
+### &nbsp; ☰ &nbsp; Responses
 
 | Status Code |      Description      |          Properties           |
 | :---------: | :-------------------: | :---------------------------: |
@@ -273,7 +273,7 @@ In this section, you will find the API's endpoints and their respective descript
 
 ###### &nbsp; &nbsp; POST _`/recharges/new`_
 
-#### &nbsp; &nbsp; ☰ &nbsp; Request
+### &nbsp; ☰ &nbsp; Request
 
 ###### Body
 
@@ -293,7 +293,7 @@ In this section, you will find the API's endpoints and their respective descript
 }
 ```
 
-#### &nbsp; &nbsp; ☰ &nbsp; Responses
+### &nbsp; ☰ &nbsp; Responses
 
 | Status Code |      Description      |          Properties           |
 | :---------: | :-------------------: | :---------------------------: |
